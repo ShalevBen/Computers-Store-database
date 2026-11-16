@@ -58,7 +58,7 @@ public void push(Object data)
 		temp1 = temp;
 		temp = newNode;
 		
-		//the new node is the higher node on the stack so it becomes the first on in the stack, every
+		//the new node is the higher node on the stack so it becomes the first one in the stack, every
 		//new node will be the first node 
 		temp.setNext(temp1);
 	}
@@ -83,8 +83,8 @@ public Product pop()
 	else 
 	{
 
-		//we are saying " we create obj , than we fatch the first from the stack
-		//and then we adjust the pointers so the below obj will bemcome the first one again
+		//we are saying " we create obj , then we fetch the first from the stack
+		//and then we adjust the pointers so the below obj will become the first one again
 		temp = (Product) node.getData();
 		node = node.getNext();
 	}

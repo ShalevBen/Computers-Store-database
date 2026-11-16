@@ -57,6 +57,4 @@ public String toString()
 			
 }
 
-//+ "next is: " +"\n" + next + "\n";
-
 }

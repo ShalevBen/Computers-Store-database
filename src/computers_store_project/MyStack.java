@@ -5,12 +5,12 @@ public interface MyStack
 
 	/**
 	* push - adds an element to the stack.
-	* @param o the elemented to be inserted to the stack.
+	* @param o the element to be inserted to the stack.
 	*/
 	public void push(Object o);
 	
 	/**
-	 * pop - removes an element form the stack (LIFO order).
+	 * pop - removes an element from the stack (LIFO order).
 	 * @return the element from the top of the stack.
 	 */
 	

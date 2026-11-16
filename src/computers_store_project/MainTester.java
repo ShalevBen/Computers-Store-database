@@ -7,11 +7,11 @@
  * 
  * System.out.println("--- computers_store_project: Main Tester ---\n");
  * 
- * Customer c1 = new Customer("Noa Bachash", 208645769, 300.0, true); Customer
+ * Customer c1 = new Customer("Ron Amar", 208645769, 300.0, true); Customer
  * c2 = new Customer("Tom roni",287548659,600.0,false); Customer c3 = new
  * Customer("Sarah Levi", 312456789, 1250.5, true); Customer c4 = new
  * Customer("David Cohen", 204938475, 420.75, false); Employee e1 = new
- * Employee("shalev", 207160193, 2500.0, c1); Wearhouse w1 = new Wearhouse();
+ * Employee("Shalev Cohan", 207768193, 2500.0, c1); Warehouse w1 = new Warehouse();
  * 
  * Keyboards k1 = new Keyboards(298675093, "mechanical", 300.0, 36); Keyboards
  * k2 = new Keyboards(786954325, "magnetic", 500.0, 24); Keyboards k3 = new
@@ -26,7 +26,7 @@
  * 
  * Customer[] customers = {c1,c2,c3,c4};
  * 
- * System.out.println("--- testing the costumer  and the employee  ---" + "\n");
+ * System.out.println("--- testing the customer and the employee ---" + "\n");
  * System.out.println("The customers that are presented at the moment \n");
  * System.out.println("The customers are: \n"); for(int i =0; i <
  * customers.length; i++) { System.out.println(customers[i].toString()+"\n"); }
@@ -41,11 +41,11 @@
  * System.out.println("the employee's info:" + "\n");
  * System.out.println(e1.toString() + "\n");
  * 
- * System.out.println("Chacking if customers are getting served!\n" +
- * e1.Is_costumers_getting_served());
+ * System.out.println("Checking if customers are getting served!\n" +
+ * e1.Is_customers_getting_served());
  * 
  * System.out.println("Looking to see if:  \n" + c1.getId() +
- * "is in the queue\n" + e1.search_costumer(c1.getId()));
+ * "is in the queue\n" + e1.search_customer(c1.getId()));
  * 
  * 
  * System.out.println("line before any changes! \n"); e1.PrintLine();
@@ -65,7 +65,7 @@
  * 
  * 
  * try { System.out.
- * println("testing the toString of the employee after all the added costumers"
+ * println("testing the toString of the employee after all the added customers"
  * ); System.out.println(e1.toString());
  * 
  * e1.dequeue_line(c1.getId());
@@ -86,62 +86,62 @@
  * e1.PrintLine(); System.out.println("\n");
  * 
  * System.out.
- * println("trying to delete a costumer who is no longer in the line!");
+ * println("trying to delete a customer who is no longer in the line!");
  * 
  * e1.dequeue_line(c3.getId()); } catch(Exception e) {
- * System.err.println("Caught Excaption:" + e.getMessage()); }
+ * System.err.println("Caught Exception:" + e.getMessage()); }
  * 
  * 
  * 
  * System.out.
- * println("---end of testing the costumer printing and the employee queue printing!---"
+ * println("---end of testing the customer printing and the employee queue printing!---"
  * + "\n");
  * 
- * System.out.println("---starting to chack the Wearhouse class!---" + "\n");
+ * System.out.println("---starting to check the Warehouse class!---" + "\n");
  * 
- * System.out.println("Looking if an employee is in the wearhouse! \n" +
- * w1.Is_employee_in_array(e1)+"\n");
+ * System.out.println("Looking if an employee is in the warehouse! \n" +
+ * w1.Is_employee_in_array(e1.get_id())+"\n");
  * 
- * System.out.println("Looking if a supplier is in the wearhouse! \n" +
+ * System.out.println("Looking if a supplier is in the warehouse! \n" +
  * w1.Is_supplier_in_array(s1.getPhone()));
  * 
  * System.out.println("The employee array before the changes: \n" +
  * w1.Show_employees() + "\n");
- * System.out.println("Removing an employee from the wearhouse! \n");
+ * System.out.println("Removing an employee from the warehouse! \n");
  * w1.Remove_employee("Emp1",101);
  * 
- * System.out.println("The wearhouse array after changes");
+ * System.out.println("The warehouse array after changes");
  * System.out.println(w1.Show_employees());
  * 
  * w1.Add_supplier(s2);
  * 
- * System.out.println("Add an iteam from one of the suppliers! \n"); try {
- * w1.Add_to_wearhouse_from_supplier("0549876543", 298675093); } catch
+ * System.out.println("Add an item from one of the suppliers! \n"); try {
+ * w1.Add_to_warehouse_from_supplier("0549876543", 298675093); } catch
  * (Exception e) {
  * 
  * System.out.println(e.getMessage()); }
  * 
  * 
  * System.out.
- * println("testing the Wearhouse pop function whan there is a product the wearhouse"
+ * println("testing the Warehouse pop function when there is a product in the warehouse"
  * + "\n"); try { Product p = w1.get_Stack().pop();
- * System.out.println("poped: \n" + p+"\n"); }catch(Exception e) {
- * System.err.println("Caught Excaption:" + e.getMessage()); }
+ * System.out.println("popped: \n" + p+"\n"); }catch(Exception e) {
+ * System.err.println("Caught Exception:" + e.getMessage()); }
  * 
  * System.out.println("test to push to the stack" + "\n");
- * if(!(w1.Is_product_in_wearhouse(k2.getId()))) { w1.get_Stack().push(k2);
+ * if(!(w1.Is_product_in_warehouse(k2.getId()))) { w1.get_Stack().push(k2);
  * 
  * } System.out.println("The item:" + k2.toString()+"\n" +
- * "already in the stack! \n"); if(!(w1.Is_product_in_wearhouse(k1.getId()))) {
+ * "already in the stack! \n"); if(!(w1.Is_product_in_warehouse(k1.getId()))) {
  * w1.get_Stack().push(k1); } System.out.println("The item: \n" +
  * k1.toString()+"\n" + " already in the stack! \n");
  * 
- * System.out.println("-- test to print the stack after i poped an item --" +
+ * System.out.println("-- test to print the stack after i popped an item --" +
  * "\n"); System.out.println(w1.get_Stack().toString() + "\n");
  * 
  * System.out.println("Testing search product func! \n"); try {
  * w1.search_product(99999999); } catch (Exception e) {
- * System.err.println("Caught Excaption: " + e.getMessage()); }
+ * System.err.println("Caught Exception: " + e.getMessage()); }
  * 
  * 
  * System.out.println("----- Supplier tests -----\n");
@@ -180,8 +180,8 @@
  * 
  * 
  * 
- * // ======= Testing remove_product_from_wearhouse =======
- * System.out.println("===== Testing remove_product_from_wearhouse =====\n");
+ * // ======= Testing remove_product_from_warehouse =======
+ * System.out.println("===== Testing remove_product_from_warehouse =====\n");
  * 
  * // Stack currently has: k1 (bottom), k2 (top) // Adding k3 so we have 3 items
  * to test with w1.get_Stack().push(k3);
@@ -190,24 +190,24 @@
  * 
  * // Test 1: Remove middle item (k2, id=786954325)
  * System.out.println("Test 1: Remove middle item k2"); Product removed1 =
- * w1.remove_product_from_wearhouse(k2.getId()); System.out.println("Removed: "
+ * w1.remove_product_from_warehouse(k2.getId()); System.out.println("Removed: "
  * + removed1 + "\n"); System.out.println("Stack after:\n" +
  * w1.get_Stack().toString());
  * 
  * // Test 2: Remove top item (k3, id=163748295)
  * System.out.println("Test 2: Remove top item k3"); Product removed2 =
- * w1.remove_product_from_wearhouse(k3.getId()); System.out.println("Removed: "
+ * w1.remove_product_from_warehouse(k3.getId()); System.out.println("Removed: "
  * + removed2 + "\n"); System.out.println("Stack after:\n" +
  * w1.get_Stack().toString());
  * 
  * // Test 3: Remove last remaining item (k1, id=298675093)
  * System.out.println("Test 3: Remove last item k1"); Product removed3 =
- * w1.remove_product_from_wearhouse(k1.getId()); System.out.println("Removed: "
+ * w1.remove_product_from_warehouse(k1.getId()); System.out.println("Removed: "
  * + removed3 + "\n");
  * 
  * // Test 4: Remove from empty stack (should throw)
  * System.out.println("Test 4: Remove from empty stack"); try {
- * w1.remove_product_from_wearhouse(111);
+ * w1.remove_product_from_warehouse(111);
  * System.out.println("FAIL - should have thrown exception\n"); } catch
  * (NullPointerException e) { System.out.println("PASS - caught: " +
  * e.getMessage()); }
@@ -215,14 +215,14 @@
  * // Test 5: Item not found (stack should stay unchanged)
  * w1.get_Stack().push(k1); w1.get_Stack().push(k2);
  * System.out.println("Test 5: Remove non-existent item (id=99999999)"); Product
- * removed5 = w1.remove_product_from_wearhouse(99999999);
+ * removed5 = w1.remove_product_from_warehouse(99999999);
  * System.out.println("Result: " + removed5 + " (should be null)\n");
  * System.out.println("Stack after (should be unchanged):\n" +
  * w1.get_Stack().toString());
  * 
- * System.out.println("===== End of remove_product_from_wearhouse tests =====\n"
+ * System.out.println("===== End of remove_product_from_warehouse tests =====\n"
  * );
  * 
- * System.out.println("End of testing for Wearhouse");
+ * System.out.println("End of testing for Warehouse");
  * System.out.println("\n--- End of tests ---\n"); } }
  */

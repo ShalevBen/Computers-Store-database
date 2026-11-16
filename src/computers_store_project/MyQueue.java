@@ -3,7 +3,7 @@ package computers_store_project;
 public interface MyQueue 
 {
 
-/**this function will chack if the queue is empty or not
+/**this function will check if the queue is empty or not
  * @return true if the queue is empty
 */
 public boolean isQueueEmpty();

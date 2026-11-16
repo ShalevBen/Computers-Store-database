@@ -53,8 +53,8 @@ public int length()
  * @return True if empty; false otherwise.
  */
 public boolean isEmpty()
-{ //make sure to see that if the first == null. it dosent mean it dont exist, it exist but its empty.
-  // you can see it in your deafult constructor, in it first == null. whice mean it exist but its empty.
+{ //make sure to see that if the first == null, it doesn't mean it doesn't exist, it exists but it's empty.
+  // you can see it in your default constructor, in it first == null, which means it exists but it's empty.
 	if(Node == null)
 	{
 		return true;

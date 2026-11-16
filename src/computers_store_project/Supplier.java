@@ -5,35 +5,35 @@ public class Supplier
 
 	private String name;
 	private String phone_number;
-	private String compeny_name;
+	private String company_name;
 	private ProductLink product_list; //a linked list of products.
 	
 public Supplier()
 {
 	name = "";
 	phone_number ="";
-	compeny_name = "";
+	company_name = "";
 	product_list = new ProductLink();
 	product_list = null;
 }
 	
-public Supplier(String given_name,String given_phone,String given_compeny,Product given_product)
+public Supplier(String given_name,String given_phone,String given_company,Product given_product)
 {
 	
 	//this will handle the supplier stuff
 	name = given_name;
 	phone_number = given_phone;
-	compeny_name = given_compeny;
+	company_name = given_company;
 	product_list = new ProductLink(given_product);
 }
 
-public Supplier(String given_name,String given_phone,String given_compeny)
+public Supplier(String given_name,String given_phone,String given_company)
 {
 	
 	//this will handle the supplier stuff
 	name = given_name;
 	phone_number = given_phone;
-	compeny_name = given_compeny;
+	company_name = given_company;
 	product_list = new ProductLink();
     product_list = null;
 	
@@ -50,9 +50,9 @@ public String getPhone()
 return phone_number;	
 }
 
-public String getCompenyName()
+public String getCompanyName()
 {
-return compeny_name;	
+return company_name;	
 }
 
 public ProductLink getList()
@@ -60,13 +60,13 @@ public ProductLink getList()
 	return product_list;
 }
 
-// we have to take in concidiration that the product list can be null so we cant print a list 
+// we have to take in consideration that the product list can be null so we can't print a list 
 // that is null.
 public String toString()
 {
 	String ans;
 	
-	ans = "name: " + name + "\n" +"phone number: " +phone_number +"\n" + "compeny_name: " +compeny_name 
+	ans = "name: " + name + "\n" +"phone number: " +phone_number +"\n" + "company_name: " +company_name 
 			+"\n"+"Suppliers Products: \n" +"\n"+
 			(product_list == null ? "null \n" : product_list.PrintList()+"\n") + "\n";
 	return ans;
@@ -105,14 +105,14 @@ public boolean Is_Product_in_the_list( int product_id)
 		{
 			return true;
 		}
-		//if we didnt we will continue to the next product in line.
+		//if we didn't we will continue to the next product in line.
 		else 
 		{
 			current = current.getNextNode();
 		}
 		
 	}
-	// if we didnt find the product at all we return false
+	// if we didn't find the product at all we return false
 	return false;
 }
 
@@ -195,7 +195,7 @@ public ProductLink removeProduct(int given_id)
 	{
 		if(curr.getProduct().getId() == given_id)
 		{
-			//this way of connecting we dont need to do curr = curr.getNext()
+			//this way of connecting we don't need to do curr = curr.getNext()
 			ans = curr;
 			prev.setNextNode(curr.getNextNode());//connecting the list in a way
 												// where the node is  "deleted".

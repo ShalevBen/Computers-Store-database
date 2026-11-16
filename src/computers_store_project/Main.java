@@ -16,11 +16,11 @@ public class Main {
 					"========================================\n" +
 							"              EMPLOYEE MENU              \n" +
 							"========================================\n" 
-							+"1. Is_costumers_getting_served?. \n" 
-							+"2. Add costumer to line of costumers.\n"
+							+"1. Is_customers_getting_served?. \n" 
+							+"2. Add customer to line of customers.\n"
 							+"3. Search Customer in line. \n" 
-							+"4. Remove costumer from line. \n"
-							+ "5. Print the line of costumers. \n " 
+							+"4. Remove customer from line. \n"
+							+ "5. Print the line of customers. \n " 
 							+"0. Back.\n" + "========================================\n" +
 					"Please select an option:");
 		}
@@ -29,11 +29,11 @@ public class Main {
 			System.out.println("========================================\n" +
 					"              MANAGER MENU              \n" +
 					"========================================\n" 
-					+"1. Remove an existing employee from the Wearhouse\n" 
+					+"1. Remove an existing employee from the Warehouse\n" 
 					+"2. Edit an Employee's data. \n" 
-					+ "3. Add a new employee to the WearHouse\n"
-					+ "4. add a new supplier to the Wearhouse\n" 
-					+"5. Remove an existing supplier from the Wearhouse\n" 
+					+ "3. Add a new employee to the Warehouse\n"
+					+ "4. add a new supplier to the Warehouse\n" 
+					+"5. Remove an existing supplier from the Warehouse\n" 
 					+"6. Add a new item to the warehouse from a supplier\n" 
 					+"7. Update item stock / details\n" 
 					+"8. Print all warehouse data (Inventory)\n" 
@@ -69,7 +69,7 @@ public class Main {
 	public static int HandleId(String input)
 	{
 		if(  input.length() != 9 ||  !input.matches("[0-9]+")) {
-			System.out.println("The entered id formated incorrectly! \n" + "has to be 9 digits long!\n");
+			System.out.println("The entered id formatted incorrectly! \n" + "has to be 9 digits long!\n");
 			return -1;
 		}
 
@@ -77,7 +77,7 @@ public class Main {
 
 		if(input.length() != 9)
 		{
-			System.out.println("The entered id formated incorrectly! \n" + "has to be 9 digits long!\n");
+			System.out.println("The entered id formatted incorrectly! \n" + "has to be 9 digits long!\n");
 			return -1;
 		}
 		return id;
@@ -96,7 +96,7 @@ public class Main {
 		String name = input;
 		if (name.length() > 70 ||  name.length() < 1)
 		{
-			System.out.println("The name  or too short! or too long");
+			System.out.println("The name is either too short or too long!");
 			return "";
 		}
 
@@ -114,7 +114,7 @@ public class Main {
 		{
 			return name;
 		}
-		System.out.println("The name isnt formanted as First name + Last name! \n");
+		System.out.println("The name isn't formatted as First name + Last name! \n");
 		return "";
 
 	}
@@ -128,7 +128,7 @@ public class Main {
 	public static String HandleType(String input)
 	{
 		if(input.length() <1) {
-			System.out.println("The length is to short! \n");
+			System.out.println("The length is too short! \n");
 			return "";
 		}
 		//Gaming Mouse
@@ -153,7 +153,7 @@ public class Main {
 		String phone = input;
 		if(phone.length() != 10 || !phone.matches("[0-9]+"))
 		{
-			System.out.println("The phone numebr dosent fit the forment! need to be 10 digits exactly! \n");
+			System.out.println("The phone number doesn't fit the format! need to be 10 digits exactly! \n");
 			return "";
 		}
 		return phone;
@@ -165,7 +165,7 @@ public class Main {
 	 * @param input Raw company name string from user input.
 	 * @return Validated company name, or empty string if format is incorrect.
 	 */
-	public static String HandleCompeny(String input)
+	public static String HandleCompany(String input)
 	{
 		if(input.length() < 1)
 		{
@@ -173,13 +173,13 @@ public class Main {
 			return "";
 		}
 		//Tech Source TECH SOURCE Asus ASUS
-		String compeny = input;
-		if(compeny.matches("[A-Z][a-z]+\\s[A-Z][a-z]+") || compeny.matches("[A-Z]+") 
-				|| compeny.matches("[A-Z]+\\s[A-Z]+")|| compeny.matches("[A-Z][a-z]+"))
+		String company = input;
+		if(company.matches("[A-Z][a-z]+\\s[A-Z][a-z]+") || company.matches("[A-Z]+") 
+				|| company.matches("[A-Z]+\\s[A-Z]+")|| company.matches("[A-Z][a-z]+"))
 		{
-			return compeny;
+			return company;
 		}
-		System.out.println("The compeny didnt match the format of capital latter and than lower case latters");
+		System.out.println("The company didn't match the format of capital letter and then lower case letters");
 		return "";
 	}
 
@@ -196,7 +196,7 @@ public class Main {
 		{
 			return price;
 		}
-		System.out.println("The price cant be above 1000.0 \n");
+		System.out.println("The price can't be above 1000.0 \n");
 		return -1.0;
 	}
 
@@ -211,7 +211,7 @@ public class Main {
 		int warranty = Integer.parseInt(input);
 		if(warranty > 36)
 		{
-			System.out.println("The warranty cant be above 36 monthes");
+			System.out.println("The warranty can't be above 36 months");
 			return -1;
 		}
 		return warranty;
@@ -223,13 +223,13 @@ public class Main {
 	 * @param input Raw salary string from user input.
 	 * @return Parsed salary as Double, or -1.0 if negative.
 	 */
-	private static Double HandleSalery(String input) {
-		Double salery = Double.parseDouble(input);
-		if(salery < 0)
+	private static Double HandleSalary(String input) {
+		Double salary = Double.parseDouble(input);
+		if(salary < 0)
 		{
 			return -1.0;
 		}
-		return salery;
+		return salary;
 
 	}
 
@@ -239,14 +239,14 @@ public class Main {
 	 * @param user_input Raw payment string from user input.
 	 * @return Parsed payment amount, or 0.0 if less than 0.01.
 	 */
-	private static double HandlePayed(String user_input) {
+	private static double HandlePaid(String user_input) {
 		double pay = Double.parseDouble(user_input);
 		if(pay < 0.0 ) {
-			System.out.println("The amount payed cannot be negative! \n");
+			System.out.println("The amount paid cannot be negative! \n");
 			return -1.0;
 		}
 		if(pay == 0.0) {
-			System.out.println("The customer hasn't payed yet (0.0) \n");
+			System.out.println("The customer hasn't paid yet (0.0) \n");
 		}
 		return pay;
 	}
@@ -258,7 +258,7 @@ public class Main {
 	 * @param id Employee ID to verify.
 	 * @param w  The store warehouse instance.
 	 */
-	public static Employee LoginEmployee(Scanner s,String input,Wearhouse w)
+	public static Employee LoginEmployee(Scanner s,String input,Warehouse w)
 	{
 		int id = HandleId(input);
 		if(id == -1)
@@ -268,7 +268,7 @@ public class Main {
 		
 		if(!w.Is_employee_in_array(id))
 		{
-			System.out.println("The Employee is not in the wearhouse,\n"
+			System.out.println("The Employee is not in the warehouse,\n"
 					+ " do you want to create an employee? Yes/No \n");
 			String user_input = s.nextLine();
 			switch(user_input)
@@ -287,8 +287,8 @@ public class Main {
 					System.out.println(e1.getMessage());
 					return null;
 				}
-				System.out.println("Added: \n" + e.toString() + "\n" + "to the wearhouse! \n");
-				System.out.println(e.get_id() +"\n" +"Enterd the wearhouse,Welcome! \n");
+				System.out.println("Added: \n" + e.toString() + "\n" + "to the warehouse! \n");
+				System.out.println(e.get_id() +"\n" +"Entered the warehouse,Welcome! \n");
 				return e;
 			case "No":
 				System.out.println("Going back! \n");
@@ -299,7 +299,7 @@ public class Main {
 			}
 		}
 		
-		System.out.println(id +"\n" +"Enterd the wearhouse,Welcome! \n");
+		System.out.println(id +"\n" +"Entered the warehouse,Welcome! \n");
 		return w.Search_employee(id);
 
 	}
@@ -324,8 +324,8 @@ public class Main {
 			s.nextLine();
 			switch (choice) {
 			case 1:
-				System.out.println("is Customers getting served now?\n" + "\n" +
-						e.Is_costumers_getting_served() + "\n");
+				System.out.println("Are customers getting served now?\n" + "\n" +
+						e.Is_customers_getting_served() + "\n");
 				break;
 
 			case 2:
@@ -341,7 +341,7 @@ public class Main {
 				if(name.equals(""))
 					continue;
 
-				if (e.Is_costumer_in_line(id)) {
+				if (e.Is_customer_in_line(id)) {
 					System.out.println("A customer with this ID and Name is already in the line!\"\n");
 					break;
 				}
@@ -354,27 +354,27 @@ public class Main {
 				break;
 
 			case 3:
-				System.out.println("Which costumer you want to search for?\n");
+				System.out.println("Which customer you want to search for?\n");
 				System.out.println("Enter id to search: \n");
 				user_input = s.nextLine();
 				id = HandleId(user_input);
 				if(id == -1)
 					continue;
-				Customer c = e.search_costumer(id);
+				Customer c = e.search_customer(id);
 				if (c == null) {
-					System.out.println("The requested costumer wasnt found! \n");
+					System.out.println("The requested customer wasn't found! \n");
 					break;
 				}
 				System.out.println("The Customer we searched for is\n" + c.getId() + "\n");
-				if (e.Is_costumer_in_line(id)) {
+				if (e.Is_customer_in_line(id)) {
 					System.out.println(id + " was found! \n");
 				}
 				break;
 
 			case 4:
-				if(!e.Is_costumers_getting_served()) 
+				if(!e.Is_customers_getting_served()) 
 				{
-					System.out.println("cant remove anyone whanm thre list is empty! \n");
+					System.out.println("can't remove anyone when the list is empty! \n");
 					break;
 				}
 				else
@@ -394,11 +394,11 @@ public class Main {
 							break;
 						}
 						System.out.println(c2.getId() + " Was removed from the line!\n");
-						System.out.println("the list after the removel" + "\n");
+						System.out.println("the list after the removal" + "\n");
 						e.PrintLine();
 						System.out.println("\n");
 					} catch (Exception e1) {
-						System.out.println("exception deteced:" + e1.getMessage());
+						System.out.println("exception detected:" + e1.getMessage());
 					}
 					break;
 				}
@@ -430,7 +430,7 @@ public class Main {
 	 * @param sup1 The supplier instance.
 	 * @param s1   Scanner instance for reading console inputs.
 	 */
-	public static void HandleManager(Wearhouse w, Employee e, Supplier sup1, Scanner s1) {
+	public static void HandleManager(Warehouse w, Employee e, Supplier sup1, Scanner s1) {
 
 		int state = 1;
 		int 	id = 0;
@@ -438,13 +438,13 @@ public class Main {
 		String name = "";
 		String phone = "";
 		String str_choice = "";
-		String compeny = "";
+		String company = "";
 		double price = 0.0;
 		int warranty = 0;
-		double salery = 0.0;
+		double salary = 0.0;
 		String change_for_employee = "";
 		String change_for_customer = "";
-		double payed = 0.0;
+		double paid = 0.0;
 		boolean  vip = false;
 		String user_input ="";
 
@@ -456,13 +456,13 @@ public class Main {
 			switch (choice) {
 
 			case 1:
-				System.out.println("Whice employee you want to remove? \n");
+				System.out.println("Which employee you want to remove? \n");
 				System.out.println("Enter the id: \n");
 				user_input = s1.nextLine();
 				id = HandleId(user_input);
 				if(id == -1)
 				{
-					// a massage will be printed from the function.
+					// a message will be printed from the function.
 					break;	
 				}
 				System.out.println("Enter the name: \n");
@@ -474,7 +474,7 @@ public class Main {
 					w.Remove_employee(name, id);
 					
 				} catch (Exception e1) {
-					System.out.println("The requested employee is not in the wearhouse! \n");
+					System.out.println("The requested employee is not in the warehouse! \n");
 					break;
 				}
 				break;
@@ -488,30 +488,30 @@ public class Main {
 					continue;
 				Employee e1 = w.Search_employee(id);
 				if (e1 == null) {
-					System.out.println("Couldnt find the requested employee! \n");
+					System.out.println("Couldn't find the requested employee! \n");
 					break;
 				}
 
-				System.out.println("What do you want to update for the Employee?:  selary/costumer_line \n");
+				System.out.println("What do you want to update for the Employee?:  salary/customer_line \n");
 				change_for_employee = s1.nextLine();
-				if (change_for_employee.equals("selary")) {
-					System.out.println("What is the selary you want to set to? \n");
+				if (change_for_employee.equals("salary")) {
+					System.out.println("What is the salary you want to set to? \n");
 					user_input = s1.nextLine();
-					salery = HandleSalery(user_input);
-					if(salery == -1.0)
+					salary = HandleSalary(user_input);
+					if(salary == -1.0)
 						continue;
-					e1.set_selary(salery);
-					System.out.println("The salery updated to: \n" + salery + "\n");
+					e1.set_salary(salary);
+					System.out.println("The salary updated to: \n" + salary + "\n");
 					break;
 				}
-				else if (change_for_employee.equals("costumer_line")) {
-					System.out.println("What do you want to do?: add costumer/edit costumer in line/remove costumer \n");
+				else if (change_for_employee.equals("customer_line")) {
+					System.out.println("What do you want to do?: add customer/edit customer in line/remove customer \n");
 					change_for_employee = s1.nextLine();
 					switch(change_for_employee)
 					{
-					case "add costumer":
+					case "add customer":
 						System.out.println("Who do you want to add? \n");
-						System.out.println("Enter name: first name + last name with capitel letters!  \n");
+						System.out.println("Enter name: first name + last name with capital letters!  \n");
 						user_input = s1.nextLine();
 						name = HandleName(user_input);
 						if(name.equals(""))
@@ -521,26 +521,26 @@ public class Main {
 						id = HandleId(user_input);
 						if(id == -1)
 							continue;
-						System.out.println("Enter how much he payed: like 300.0 \n");
+						System.out.println("Enter how much he paid: like 300.0 \n");
 						user_input = s1.nextLine();
-						payed = HandlePayed(user_input); 
-						if(payed == -1.0)
+						paid = HandlePaid(user_input); 
+						if(paid == -1.0)
 							continue;
 						System.out.println("Enter is he a vip?: false/true \n");
 						vip = s1.nextBoolean();
 						s1.nextLine();
-						Customer temp = new Customer(name, id, payed, vip);
-						if(e1.Is_costumer_in_line(id))
+						Customer temp = new Customer(name, id, paid, vip);
+						if(e1.Is_customer_in_line(id))
 						{
-							System.out.println("The costumer is already in the Line! \n");
+							System.out.println("The customer is already in the Line! \n");
 							break;
 						}
 						e1.enqueue_line(temp);
-						System.out.println("Added the costumer: \n" + temp.toString() + "\nto the line! \n");
+						System.out.println("Added the customer: \n" + temp.toString() + "\nto the line! \n");
 						break;
 
 
-					case "remove costumer":
+					case "remove customer":
 						System.out.println("Who do you want to remove? \n");
 						System.out.println("Enter id: \n");
 						user_input = s1.nextLine();
@@ -550,42 +550,42 @@ public class Main {
 						try {
 							Customer c = e1.dequeue_line(id);
 							if(c != null) {
-								System.out.println("Removed: \n" + c.getId() + "\nfrom the costumer list of the employee " + e1.get_id() + "\n");
+								System.out.println("Removed: \n" + c.getId() + "\nfrom the customer list of the employee " + e1.get_id() + "\n");
 								break;
 							}
-							System.out.println("The requested id for removel is not in the costumer line! \n");
+							System.out.println("The requested id for removal is not in the customer line! \n");
 							break;
 						} catch (Exception e2) {
 							System.out.println(e2.getMessage() + "\n");
 							break;
 						}
 
-					case "edit costumer in line":
-						System.out.println("Enter the id of the costumer you want to edit in the line? \n");
+					case "edit customer in line":
+						System.out.println("Enter the id of the customer you want to edit in the line? \n");
 						user_input = s1.nextLine();
 						id = HandleId(user_input);
 						if(id == -1)
 							break;
-						if (e1.Is_costumer_in_line(id) == true) {
-							Customer temp1 = e1.search_costumer(id);
-							System.out.println("What do you want to change for this customer?: vip/amount payed \n");
+						if (e1.Is_customer_in_line(id) == true) {
+							Customer temp1 = e1.search_customer(id);
+							System.out.println("What do you want to change for this customer?: vip/amount paid \n");
 							change_for_customer = s1.nextLine();
 							if (change_for_customer.contentEquals("vip")) {
 								System.out.println("What do you want to change vip to?: true/false \n");
 								vip = s1.nextBoolean();
 								s1.nextLine();
 								temp1.setIs_vip(vip);
-								System.out.println("Changed the costumer's vip status! \n");
+								System.out.println("Changed the customer's vip status! \n");
 								break;
 							}
-							else if (change_for_customer.equals("amount payed")) {
-								System.out.println("whice amount payed you want to set for the customer! \n");
+							else if (change_for_customer.equals("amount paid")) {
+								System.out.println("Which amount paid you want to set for the customer! \n");
 								user_input = s1.nextLine();
-								payed = HandlePayed(user_input);
-								if(payed == -1.0)
+								paid = HandlePaid(user_input);
+								if(paid == -1.0)
 									continue;
-								temp1.setAmount_payed(payed);
-								System.out.println("Changed the amount payed for the customer! \n");
+								temp1.setAmount_paid(paid);
+								System.out.println("Changed the amount paid for the customer! \n");
 								break;
 							}
 
@@ -596,7 +596,7 @@ public class Main {
 						}
 						else
 						{
-							System.out.println("The costumer is not in line! \n");
+							System.out.println("The customer is not in line! \n");
 							break;
 						}
 
@@ -617,7 +617,7 @@ public class Main {
 				break;
 
 			case 3:
-				System.out.println("Whice new employee do you want to add to the WearHouse \n");
+				System.out.println("Which new employee do you want to add to the Warehouse \n");
 				System.out.println("Enter the id: \n");
 				user_input = s1.nextLine();
 				id = HandleId(user_input);
@@ -632,7 +632,7 @@ public class Main {
 				break;
 
 			case 4:
-				System.out.println("Which new supplier do you want to add to the wearhouse? \n");
+				System.out.println("Which new supplier do you want to add to the warehouse? \n");
 				System.out.println("Enter his name: \n");
 				user_input = s1.nextLine();
 				name = HandleName(user_input);
@@ -643,13 +643,13 @@ public class Main {
 				phone = HandlePhone(user_input);
 				if(phone.equals(""))
 					continue;
-				System.out.println("Enter his compny: \n");
+				System.out.println("Enter his company: \n");
 				user_input = s1.nextLine();
-				compeny = HandleCompeny(user_input);
-				if(compeny.equals(""))
+				company = HandleCompany(user_input);
+				if(company.equals(""))
 					continue;
 				System.out.println("Now we build the product for the supplier! \n");
-				System.out.println("Enter prodct id: \n");
+				System.out.println("Enter product id: \n");
 				user_input = s1.nextLine();
 				id = HandleId(user_input);
 				if(id == -1)
@@ -671,9 +671,9 @@ public class Main {
 					break;
 				System.out.println("Creating the product! \n");
 				Keyboards k = new Keyboards(id,type,price,warranty);
-				System.out.println("Created the product and now adding the new supplier into the wearhouse!  \n");
+				System.out.println("Created the product and now adding the new supplier into the warehouse!  \n");
 				try {
-					w.Add_New_supplier(name, phone, compeny, k);
+					w.Add_New_supplier(name, phone, company, k);
 					break;
 				} catch (Exception e2) {
 					e2.getMessage();
@@ -681,7 +681,7 @@ public class Main {
 				}
 
 			case 5:
-				System.out.println("Which supplier do you want to remove from the wearhouse? \n");
+				System.out.println("Which supplier do you want to remove from the warehouse? \n");
 				System.out.println("Enter the phone of the requested supplier! \n");
 				user_input = s1.nextLine();
 				phone = HandlePhone(user_input);
@@ -690,13 +690,13 @@ public class Main {
 				try {
 					w.Remove_supplier(phone);
 				} catch (Exception e2) {
-					System.out.println("The requested supplier is not in the wearhouse! \n");
+					System.out.println("The requested supplier is not in the warehouse! \n");
 					break;
 				}
 				break;
 
 			case 6:
-				System.out.println("Whice product do you want to add to the wearhouse from whice supplier? \n");
+				System.out.println("Which product do you want to add to the warehouse from which supplier? \n");
 				System.out.println(" Enter Supplier phone number: \n");
 				user_input = s1.nextLine();
 				phone = HandlePhone(user_input);
@@ -708,7 +708,7 @@ public class Main {
 				if(id == -1)
 					continue;
 				try {
-					w.Add_to_wearhouse_from_supplier(phone, id);
+					w.Add_to_warehouse_from_supplier(phone, id);
 					break;
 				} catch (Exception e2) {
 
@@ -717,20 +717,20 @@ public class Main {
 				}
 
 			case 7:
-				System.out.println("Whice item do you want to change? \n");
+				System.out.println("Which item do you want to change? \n");
 				System.out.println("Enter id: \n");
 				user_input = s1.nextLine();
 				id = HandleId(user_input);
 				if(id == -1)
 					break;
-				if (!(w.Is_product_in_wearhouse(id))) {
-					System.out.println("The item is not in the wearhouse! \n");
+				if (!(w.Is_product_in_warehouse(id))) {
+					System.out.println("The item is not in the warehouse! \n");
 					break;
 				}
 				System.out.println("What do you want to change? price / warranty \n");
 				str_choice = s1.nextLine();
 				if (str_choice.equals("price")) {
-					System.out.println("What is the price you want to change to?: make sure its a floting point price \n");
+					System.out.println("What is the price you want to change to?: make sure it's a floating point price \n");
 					user_input = s1.nextLine();
 					price = HandlePrice(user_input);
 					if(price == -1.0)
@@ -769,12 +769,12 @@ public class Main {
 
 
 			case 8:
-				System.out.println("Printing item in wearhouse right now: \n");
+				System.out.println("Printing item in warehouse right now: \n");
 				System.out.println(w.get_Stack().toString());
 				break;
 
 			case 9:
-				System.out.println("Printing the employees in the wearhouse. \n");
+				System.out.println("Printing the employees in the warehouse. \n");
 				System.out.println(w.Show_employees());
 				break;
 
@@ -792,7 +792,7 @@ public class Main {
 
 
 		int empId =0 ,prodId =0,prodWarranty = 0;
-		String empName ="" ,supName ="",supPhone ="",supCompeny="",prodType ="";
+		String empName ="" ,supName ="",supPhone ="",supCompany="",prodType ="";
 		double prodPrice = 0.0;
 
 		System.out.println(
@@ -808,7 +808,7 @@ public class Main {
 			empId = HandleId(id_input);
 			if(empId == -1)
 				// with continue you go to the next iteration of the loop,
-				//with break you go out of the loop entierly.
+				//with break you go out of the loop entirely.
 				continue;
 
 			System.out.println("Enter Name: name need to be first name + last name!");
@@ -832,9 +832,9 @@ public class Main {
 				continue;
 
 			System.out.println("Enter Company Name: need to have a capital first char! ");
-			String compeny_input = input.nextLine();
-			supCompeny = HandleCompeny(compeny_input);
-			if(supCompeny.equals(""))
+			String company_input = input.nextLine();
+			supCompany = HandleCompany(company_input);
+			if(supCompany.equals(""))
 				continue;
 
 			//======================================================================================
@@ -845,7 +845,7 @@ public class Main {
 			if(prodId == -1)
 				continue;
 
-			System.out.println("Enter Type: type needs to be like: (Keyboard,Gaming Mouse,exc..).");
+			System.out.println("Enter Type: type needs to be like: (Keyboard,Gaming Mouse,etc..).");
 			String prod_input = input.nextLine();
 			prodType = HandleType(prod_input);
 			if(prodType.equals(""))
@@ -857,7 +857,7 @@ public class Main {
 			if(prodPrice == -1.0)
 				continue;
 
-			System.out.println("Enter Warranty (months): cant be more than a 36");
+			System.out.println("Enter Warranty (months): can't be more than 36");
 			String warranty_input = input.nextLine();
 			prodWarranty = HandleWarranty(warranty_input);
 			if(prodWarranty == -1)
@@ -868,18 +868,20 @@ public class Main {
 
 		Employee e1 = new Employee(empId,empName);
 		Keyboards k1 = new Keyboards(prodId,prodType,prodPrice,prodWarranty);
-		Supplier s1 = new Supplier(supName,supPhone,supCompeny,k1);
-		Wearhouse w1 = new Wearhouse(e1,s1);
+		Supplier s1 = new Supplier(supName,supPhone,supCompany,k1);
+		Warehouse w1 = new Warehouse(e1,s1);
 
 		System.out.println("\nSetup Complete! Opening the store...\n");
 
+		
+		
 		String state = "";
-		boolean runing = false;
+		boolean running = false;
 		String user_input = "";
 
-		runing = true;
+		running = true;
 
-		while (runing) {
+		while (running) {
 			System.out.println("Who are you? Employee or Manager?\n");
 			System.out.println("Exit.\n");
 			state = input.nextLine();
@@ -902,7 +904,7 @@ public class Main {
 			case "Exit":
 				System.out.println("Exiting!\n");
 				input.close();
-				runing = false;
+				running = false;
 				break;
 
 			default:

@@ -5,28 +5,28 @@ public class Employee
 
 	private String name;
 	private int id;
-	private double selary;
-	private LinkedQueue costumer_line;
-	//a queue implemented as a linked list of costumers he gave service to.
+	private double salary;
+	private LinkedQueue customer_line;
+	//a queue implemented as a linked list of customers he gave service to.
 	
 public Employee()
 {
 	name= null;
 	id = 0;
-	selary = 0;
-	costumer_line = new LinkedQueue();
-	costumer_line = null;
+	salary = 0;
+	customer_line = new LinkedQueue();
+	customer_line = null;
 }
 
 
-public Employee(String given_name,int given_id,double given_selary,Customer given_customer)
+public Employee(String given_name,int given_id,double given_salary,Customer given_customer)
 {
 		
 		name = given_name;
 		id = given_id;
-		selary = given_selary;
-		costumer_line = new LinkedQueue();
-		costumer_line.Enqueue(given_customer);
+		salary = given_salary;
+		customer_line = new LinkedQueue();
+		customer_line.Enqueue(given_customer);
 }
  /*
   * a constructor that will build a basic employee */
@@ -35,19 +35,20 @@ public Employee(int given_id,String given_name)
 		
 		name = given_name;
 		id = given_id;
-		selary = 0;
-		costumer_line = new LinkedQueue();
+		salary = 0;
+		customer_line = new LinkedQueue();
 }
+
 public Employee (Employee given_employee)
 {
 	name = given_employee.get_name();
 	id = given_employee.get_id();
-	selary = given_employee.get_selary();
-	costumer_line = given_employee.getLine();
+	salary = given_employee.get_salary();
+	customer_line = given_employee.getLine();
 
 }
 	
-	// name and id getters. seters not needed.
+// name and id getters. setters not needed.
 public String get_name()
 {
 		
@@ -61,28 +62,28 @@ public int get_id()
 }
 	
 //other stuff
-public double get_selary()
+public double get_salary()
 
 {
-		return selary;	
+		return salary;	
 }
 
-public void set_selary(double given_selary)
+public void set_salary(double given_salary)
 {
 		
-		selary = given_selary;
+		salary = given_salary;
 }
 
 public LinkedQueue getLine()
 {
-	return costumer_line;
+	return customer_line;
 }
 	
 public String toString()
 {
 	String ans = "";
-	 ans = "name: " + name + "\n" +"Id: " + id +"\n" +"selary: " + selary + "\n" +
-		   "\n" + "the queue of costumers for the employee is:" + "\n" + costumer_line.printLinkedQueue() + "\n";
+	 ans = "name: " + name + "\n" +"Id: " + id +"\n" +"salary: " + salary + "\n" +
+		   "\n" + "the queue of customers for the employee is:" + "\n" + customer_line.printLinkedQueue() + "\n";
 	return ans;
 }
 
@@ -91,9 +92,9 @@ public String toString()
  *
  * @return True if there are customers waiting; false if queue is empty.
  */
-public boolean Is_costumers_getting_served()
+public boolean Is_customers_getting_served()
 {
-	return !(costumer_line.isQueueEmpty());
+	return !(customer_line.isQueueEmpty());
 }
 
 /**
@@ -102,14 +103,14 @@ public boolean Is_costumers_getting_served()
  * @param given_id The ID of the customer to search for.
  * @return True if customer is in line; false otherwise.
  */
-public boolean Is_costumer_in_line(int given_id)
+public boolean Is_customer_in_line(int given_id)
 {
-	if(costumer_line.isQueueEmpty())
+	if(customer_line.isQueueEmpty())
 	{
 		return false;
 	}
 	
-	Link node = costumer_line.getList().getNode();
+	Link node = customer_line.getList().getNode();
 	
 	Customer temp = null;
 	
@@ -130,16 +131,16 @@ public boolean Is_costumer_in_line(int given_id)
 /**
  * Adds a customer to the end of the employee's service queue if they are not already in it.
  *
- * @param given_costumer The Customer to add.
+ * @param given_customer The Customer to add.
  */
-public void enqueue_line(Customer given_costumer)
+public void enqueue_line(Customer given_customer)
 {
-	if(Is_costumer_in_line(given_costumer.getId()))
+	if(Is_customer_in_line(given_customer.getId()))
 	{
 		return;
 	}
-	//inserting the costumer to the queue
-	costumer_line.Enqueue(given_costumer);
+//inserting the customer to the queue
+	customer_line.Enqueue(given_customer);
 }
 
 
@@ -150,7 +151,7 @@ public void enqueue_line(Customer given_costumer)
  * @param given_id The ID of the customer to find.
  * @return The Customer object if found; null otherwise.
  */
-public Customer search_costumer(int given_id)
+public Customer search_customer(int given_id)
 {
 	LinkedQueue temp_q = new LinkedQueue();
 	Customer temp_c = null;
@@ -162,10 +163,10 @@ public Customer search_costumer(int given_id)
 	 * you need to dequeue the whole queue and requeue it back
 	 * to save the order of the queue
 	 * */
-	while(!(costumer_line.isQueueEmpty()))
+	while(!(customer_line.isQueueEmpty()))
 	{
 		//holds the first person in the OG q
-		temp_c = costumer_line.Dequeue();
+		temp_c = customer_line.Dequeue();
 		if(temp_c.getId() == given_id)
 		{
 			temp_c1 = temp_c;
@@ -185,7 +186,7 @@ public Customer search_costumer(int given_id)
 	 * */
 		for(int i = 0; i< counter ;i++)
 		{
-			costumer_line.Enqueue(temp_q.Dequeue());
+			customer_line.Enqueue(temp_q.Dequeue());
 		}
 		return temp_c1;
 }
@@ -201,15 +202,15 @@ public Customer search_costumer(int given_id)
 public Customer dequeue_line(int given_id) throws Exception
 {
 	
-	// make sure the queue isnt empty whan you try to dequeue a costumer
-	if(costumer_line.isQueueEmpty())
+// make sure the queue isn't empty when you try to dequeue a customer
+	if(customer_line.isQueueEmpty())
 	{
-		throw new Exception("The queue is empty! cant dequeue a costumer!" + "\n");
+		throw new Exception("The queue is empty! can't dequeue a customer!" + "\n");
 	}
 	
 	
 	// making sure first the customer is in the queue
-	if(!(Is_costumer_in_line(given_id)))
+	if(!(Is_customer_in_line(given_id)))
 	{
 		System.out.println("the customer is not in the queue");
 		return null;
@@ -225,10 +226,10 @@ public Customer dequeue_line(int given_id) throws Exception
 	 * you need to dequeue the whole queue and requeue it back
 	 * to save the order of the queue
 	 * */
-	while(!(costumer_line.isQueueEmpty()))
+	while(!(customer_line.isQueueEmpty()))
 	{
 		//holds the first person in the OG q
-		temp_c = costumer_line.Dequeue();
+		temp_c = customer_line.Dequeue();
 		if(temp_c.getId() == given_id)
 		{
 			temp_c_2 = temp_c;
@@ -240,10 +241,10 @@ public Customer dequeue_line(int given_id) throws Exception
 		}	
 	}
 	
-	// requeing the OG queue in order
+	// requeuing the OG queue in order
 	for(int i = 0; i< counter ;i++)
 	{
-		costumer_line.Enqueue(temp_q.Dequeue());
+		customer_line.Enqueue(temp_q.Dequeue());
 	}
 	return temp_c_2;
 }
@@ -253,7 +254,7 @@ public Customer dequeue_line(int given_id) throws Exception
  */
 public void PrintLine()
 {
-	System.out.println(costumer_line.printLinkedQueue());
+	System.out.println(customer_line.printLinkedQueue());
 }
 
 }

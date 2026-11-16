@@ -8,7 +8,7 @@ public abstract class Product
 	private int warranty;
 	
 	
-// product constractor
+// product constructor
 public 	Product(int given_id ,String given_type ,double given_price,int given_warranty)
 {
 	this.id = given_id;
@@ -73,10 +73,10 @@ public String toString()
  *
  * @param dis Percentage discount to deduct (e.g., 10 for 10%, 20 for 20%).
  */
-public void GiveDiscount(double dis)
+public void ApplyDiscount(double dis)
 {
-	double precent = dis/100; //gives the amount of discount like 10% or 20%...
-	double discount = getPrice()*precent; // amount of money to remove from price
+	double percent = dis/100; //gives the amount of discount like 10% or 20%...
+	double discount = getPrice()*percent; // amount of money to remove from price
 	setPrice(getPrice()-discount); //new price
 }
 
@@ -85,10 +85,10 @@ public void GiveDiscount(double dis)
  *
  * @return Final price after VAT.
  */
-public double applyVat()
+public double ApplyVat()
 {
-	double VatInIsreal = 0.18;
-	double amount_of_vat = price*VatInIsreal;
+	double VatInIsrael = 0.18;
+	double amount_of_vat = price*VatInIsrael;
 	double after_vat = price + amount_of_vat;
 	return after_vat;
 }
@@ -99,8 +99,9 @@ public double applyVat()
  * @param type             "add" to increase warranty; "subtract" to decrease warranty.
  * @param number_to_change Number of months to adjust.
  */
-public void change_warrenty(String type,int number_to_change)
+public void change_warranty(String type,int number_to_change)
 {
+	System.out.println("What is the type of change? add/subtract \n");
 	
 	if(type.equals("add") )
 	{
@@ -114,7 +115,7 @@ public void change_warrenty(String type,int number_to_change)
 		return;
 	}
 	
-	System.out.println("the type of opperation wasnt spacifid");
+	System.out.println("the type of operation wasn't specified");
 	return;
 }
 
