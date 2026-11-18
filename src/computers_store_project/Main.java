@@ -17,12 +17,16 @@ public class Main {
 							"              EMPLOYEE MENU              \n" +
 							"========================================\n" 
 							+"1. Is_customers_getting_served?. \n" 
-							+"2. Add customer to line of customers.\n"
-							+"3. Search Customer in line. \n" 
-							+"4. Remove customer from line. \n"
-							+ "5. Print the line of customers. \n " 
-							+"0. Back.\n" + "========================================\n" +
-					"Please select an option:");
+							+"2. Check if a product is in the warehouse. \n"
+							+"3. Deliver an item to the customer form warhouse. \n"
+							+"4. check if item is in warehouse. \n"
+							+"5. Add customer to line of customers.\n"
+							+"6. Search Customer in line. \n" 
+							+"7. Remove customer from line. \n"
+							+"8. Print the line of customers. \n " 
+							+"0. Back.\n" 
+							+ "========================================\n" +
+							  "Please select an option:");
 		}
 
 		if (a.equals("Manager")) {
@@ -312,7 +316,7 @@ public class Main {
 	 * @param e The Employee currently handling customer service.
 	 * @param s Scanner instance for reading console inputs.
 	 */
-	public static void HandleEmployee(Employee e, Scanner s) {
+	public static void HandleEmployee(Employee e, Scanner s , Warehouse w) {
 		int id;
 		String name;
 		String user_input ="";
@@ -327,19 +331,81 @@ public class Main {
 				System.out.println("Are customers getting served now?\n" + "\n" +
 						e.Is_customers_getting_served() + "\n");
 				break;
-
 			case 2:
+				System.out.println("Which product you want to check in the warehouse? \n");
+				System.out.println("Enter product id: \n");
+				user_input = s.nextLine();
+				id = HandleId(user_input);
+				if(id == -1)
+					break;
+				if(w.Is_product_in_warehouse(id))
+				{
+					System.out.println("The requested item is indeed in the warehouse! \n");
+					break;
+				}
+				System.out.println("The requested item is not in the warehouse! \n");
+				break;
+			case 3:
+				System.out.println("Which customer you want to give item to? \n");
+				System.out.println("Enter id: \n");
+				user_input = s.nextLine();
+				id = HandleId(user_input);
+				if(id == -1)
+					break;
+				if(e.Is_customer_in_line(id))
+				{
+					//simulating serving the right customer and relessing him from the line
+					// beacuse we give him the item he want.
+					try {
+						Customer served = new Customer(e.dequeue_line(id));
+						System.out.println("Which item do you want to get from the warehouse? \n");
+						user_input = s.nextLine();
+						id = HandleId(user_input);
+						if(id == -1)
+							break;
+						if(w.Is_product_in_warehouse(id))
+						{
+							Product temp = w.remove_product_from_warehouse(id);
+							System.out.println("Sucsessfully got : \n" + temp.toString()
+							+"\n From the warehouse and served: \n" + served.toString() +"and got him out of the warehouse! \n");
+							// i know that we didnt really give the item to the customer
+							// beacuse by removing the item we simulate the " handing to customer" process
+							// so we dequeued the customer from the line beacuse he got served.
+							break;
+						}
+						System.out.println("The requested item is not in the warehouse! \n");
+						break;
+					} catch (Exception e1) {
+						System.err.println(e1.getMessage()); 
+						break;
+					}
+					
+				}
+			case 4:
+				System.out.println("Which item you want to check if in the warehouse? \n");
+				user_input = s.nextLine();
+				id = HandleId(user_input);
+				if(id == -1)
+					break;
+				if(w.Is_product_in_warehouse(id))
+				{
+					System.out.println("The item is in the warehouse! \n");
+					break;
+				}
+				System.out.println("The requested item is not in the warehouse! \n");
+				break;
+			case 5:
 				System.out.println("Who do you want to add to the line? \n");
 				System.out.println("enter id: \n");
 				user_input = s.nextLine();
 				id = HandleId(user_input);
 				if(id == -1)
-					continue;
+					break;
 				System.out.println("enter name: \n");
 				user_input = s.nextLine();
 				name = HandleName(user_input);
 				if(name.equals(""))
-					continue;
+					break;
 
 				if (e.Is_customer_in_line(id)) {
 					System.out.println("A customer with this ID and Name is already in the line!\"\n");
@@ -353,13 +419,13 @@ public class Main {
 				System.out.println("\n");
 				break;
 
-			case 3:
+			case 6:
 				System.out.println("Which customer you want to search for?\n");
 				System.out.println("Enter id to search: \n");
 				user_input = s.nextLine();
 				id = HandleId(user_input);
 				if(id == -1)
-					continue;
+					break;
 				Customer c = e.search_customer(id);
 				if (c == null) {
 					System.out.println("The requested customer wasn't found! \n");
@@ -371,7 +437,7 @@ public class Main {
 				}
 				break;
 
-			case 4:
+			case 7:
 				if(!e.Is_customers_getting_served()) 
 				{
 					System.out.println("can't remove anyone when the list is empty! \n");
@@ -384,7 +450,7 @@ public class Main {
 					user_input = s.nextLine();
 					id = HandleId(user_input);
 					if(id == -1)
-						continue;
+						break;
 					Customer c2 = new Customer();
 
 					try {
@@ -402,7 +468,7 @@ public class Main {
 					}
 					break;
 				}
-			case 5:
+			case 8:
 				System.out.println("Printing the customer list for:\n" + e.get_name() + "\n" + e.get_id() + "\n");
 				e.PrintLine();
 				break;
@@ -893,7 +959,7 @@ public class Main {
 				Employee temp = LoginEmployee(input,user_input,w1);
 				if( temp != null)
 				{
-				HandleEmployee(temp, input);
+				HandleEmployee(temp, input,w1);
 				}
 				break;
 

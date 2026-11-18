@@ -631,12 +631,12 @@ public class Warehouse
 	 * @return The matching Product instance.
 	 * @throws Exception If the product ID is not present in the warehouse.
 	 */
-	public Product search_product(int given_id) throws Exception
+	public Product search_product(int given_id)
 	{
 		if(!(Is_product_in_warehouse(given_id)))
 		{
-			throw new Exception("The requested id is not in the warehouse! \n");
-
+			//returns null as an indicator that the item is not in the warehouse.
+			return null;
 		}
 
 		Link temp = item_stack.getNode();
@@ -653,7 +653,9 @@ public class Warehouse
 				temp = temp.getNext();
 			}
 		}
-		throw new NullPointerException("The requested id was not found! \n");
+		//if we iterated over the whole stack and for some reason we didnt find
+		// the iteam that was looked for, we will return null which would indicate , we didnt find the item.
+		return null;
 	}
 
 	/**
